@@ -1,8 +1,4 @@
-# 📘 LEARN-E — Minimalist Educational App
-
-**Client:** Excelerate  
-**Project Submitted by:** Mainuddin  
-**Delivered on:** October 13, 2025  
+# 📘 LEARN-E — Minimalist Educational App 
 
 ---
 
