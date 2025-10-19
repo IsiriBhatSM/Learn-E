@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-final Color primaryOrange = Color(0xFFFC603F);
-final Color white = Colors.white;
-final Color black = Colors.black;
+const Color primaryOrange = Color(0xFFFC603F);
+const Color white = Colors.white;
+const Color black = Colors.black;
 
 ThemeData learnETheme = ThemeData(
   primaryColor: primaryOrange,
   scaffoldBackgroundColor: white,
   fontFamily: 'Poppins', // clean and modern font
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     backgroundColor: primaryOrange,
     foregroundColor: white,
     elevation: 2,
@@ -19,7 +19,7 @@ ThemeData learnETheme = ThemeData(
       color: white,
     ),
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     bodyMedium: TextStyle(
       color: black,
       fontSize: 16,
@@ -59,7 +59,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: Replace Scaffold with actual home screen (e.g., LoginPage) when created
 
-    return MaterialApp(title: 'Learn-E', theme: learnETheme, home: Scaffold()
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Learn-E', theme: learnETheme, home: const Scaffold()
     );
   }
 }
