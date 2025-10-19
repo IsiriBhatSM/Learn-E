@@ -1,10 +1,10 @@
 // lib/home.dart
 import 'package:flutter/material.dart';
-import 'widgets/top_search_bar.dart';
-import 'widgets/topic_row.dart';
-import 'widgets/category_list.dart';
-import 'widgets/bottom_nav.dart';
-import 'widgets/right_drawer.dart';
+import 'top_search_bar.dart';
+import 'topic_row.dart';
+import 'category_list.dart';
+import 'bottom_nav.dart';
+import 'right_drawer.dart';
 
 class HomePage extends StatelessWidget {
   final String userName;
