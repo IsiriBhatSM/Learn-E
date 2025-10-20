@@ -6,7 +6,7 @@ class CategoryList extends StatelessWidget {
   final List<Map<String, String>> categories;
   final void Function(String categoryId) onCategoryTap;
 
-  const CategoryList({Key? key, required this.categories, required this.onCategoryTap}) : super(key: key);
+  const CategoryList({super.key, required this.categories, required this.onCategoryTap});
 
   @override
   Widget build(BuildContext context) {

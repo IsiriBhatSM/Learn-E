@@ -6,7 +6,7 @@ class TopicRow extends StatelessWidget {
   final List<Map<String, String>> facts;
   final void Function(Map<String, String>) onFactTap;
 
-  const TopicRow({Key? key, required this.facts, required this.onFactTap}) : super(key: key);
+  const TopicRow({super.key, required this.facts, required this.onFactTap});
 
   @override
   Widget build(BuildContext context) {
