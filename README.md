@@ -169,7 +169,6 @@ The following **10 core prototype screens** were designed and implemented with w
 ## 📌 Week 2 Deliverables Completed
 
 ✅ 10 interactive Flutter UI screens  
-✅ Fully working navigation flow  
 ✅ GitHub repository updated with meaningful commits  
 ✅ README updated with screenshots section   
 
