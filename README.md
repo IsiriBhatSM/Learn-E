@@ -83,6 +83,8 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 
 ## 🧑‍💻 Tech Stack
 
+| Component | Choice |
+|-----------|--------|
 - **Framework:** Flutter  
 - **Platform:** Android (mobile first)  
 - **Backend (Planned):** Firebase / Cloud Sync  
@@ -95,3 +97,92 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 > “Delivering the world to you — one fact at a time.”  
 >
 > LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age.
+
+
+----
+## Week-2 Deliverables:
+----
+
+## 🧭 App Flow 
+
+The following **10 core prototype screens** were designed and implemented with working navigation:
+
+1. **Login Page** — User authentication entry  
+2. **Signup Page** — New user registration  
+3. **Home Page** — Modules, highlights & learning overview  
+4. **Search in Home Page** — Filters/search for topics/programs  
+5. **Program List Page** — All available programs  
+6. **Program Details Page** — Deep dive into selected program  
+7. **Profile Page** — User progress, streaks, achievements  
+8. **Settings Page** — Preferences, notifications, theme, etc.  
+9. **Side Drawer / Navigation Drawer** — Quick navigation access  
+10. **About Us Page** — Brand mission & app purpose  
+
+---
+
+## 📸 Screenshots 
+
+### 1. Login Page
+![Login Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/LoginPage.png)
+
+### 2. Signup Page
+![Signup Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/SignupPage.png)
+
+### 3. Home Page
+![Home Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/HomePage.png)
+
+### 4. Searching in Home Page
+![Searching in Home Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/SearchinginHomePage.png)
+
+### 5. Program List Page
+![Program List Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/Program%20List%20Page.png)
+
+### 6. Program Details Page
+![Program Details Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/ProgramDetailsPage.png)
+
+### 7. Profile Page
+![Profile Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/ProgramDetailsPage.png)
+
+### 8. Settings Page
+![Settings Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/SettingsPage.png)
+
+### 9. Side Drawer
+![Side Drawer](https://github.com/IsiriBhatSM/Learn-E/blob/main/SideDrawer.png)
+
+### 10. About Us Page
+![About Us Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/AboutUsPage.png)
+
+---
+
+## 🎨 Experience Highlights
+
+- **Clean & distraction-free learning flow**  
+- **Gamified motivation** (progress, streak, rewards)  
+- **Accessible UI** (large fonts, clear contrast, readable content)  
+- **Instant visual + feedback-driven learning**
+
+---
+
+
+## 📌 Week 2 Deliverables Completed
+
+✅ 10 interactive Flutter UI screens  
+✅ Fully working navigation flow  
+✅ GitHub repository updated with meaningful commits  
+✅ README updated with screenshots section   
+
+---
+
+## 🔗 Resources
+
+- **GitHub Repository:** [Learn-E on GitHub](https://github.com/IsiriBhatSM/Learn-E.git)  
+
+---
+
+## 🌟 Vision
+
+> “Delivering the world to you — one fact at a time.”  
+LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beautifully accessible. Thanks for your time.
+
+---
+
