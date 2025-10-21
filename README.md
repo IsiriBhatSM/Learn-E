@@ -1,6 +1,8 @@
 # 📘 LEARN-E — Minimalist Educational App 
 
 ---
+## Week-1 Deliverables:
+---
 
 ## 🚀 Overview
 
