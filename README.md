@@ -83,14 +83,13 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 
 ---
 
-## 🧑‍💻 Tech Stack
+### 🛠️ Tech Stack
 
-| Component | Choice |
-|-----------|--------|
-- **Framework:** Flutter  
-- **Platform:** Android (mobile first)  
-- **Backend (Planned):** Firebase / Cloud Sync  
-- **Design Tools:** Figma  
+**Frontend:** Flutter (Dart)  
+**Platform:** Android (mobile first) 
+**Design Tools:** Figma  
+**Backend (Planned):** Firebase / Cloud Sync (Auth, Firestore, Storage)  
+**Version Control:** Git & GitHub
 
 ---
 
@@ -101,78 +100,152 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 > LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age.
 
 
+
 ----
-## Week-2 Deliverables:
+## Week-2 Deliverables:(UI Prototype Development)
 ----
 
-## 🧭 App Flow 
 
-The following **10 core prototype screens** were designed and implemented with working navigation:
-
-1. **Login Page** — User authentication entry  
-2. **Signup Page** — New user registration  
-3. **Home Page** — Modules, highlights & learning overview  
-4. **Search in Home Page** — Filters/search for topics/programs  
-5. **Program List Page** — All available programs  
-6. **Program Details Page** — Deep dive into selected program  
-7. **Profile Page** — User progress, streaks, achievements  
-8. **Settings Page** — Preferences, notifications, theme, etc.  
-9. **Side Drawer / Navigation Drawer** — Quick navigation access  
-10. **About Us Page** — Brand mission & app purpose  
+### Overview
+Developed a fully functional UI prototype featuring 10 interactive screens with seamless navigation, implementing LEARN-E's branding philosophy of distraction-free, gamified learning.
 
 ---
 
-## 📸 Screenshots 
+### 🧭 Implemented Screens
 
-### 1. Login Page
+#### 1. **Login Page**
+User authentication entry point with clean, intuitive design.
+
 ![Login Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/LoginPage.png)
 
-### 2. Signup Page
+#### 2. **Signup Page**
+Streamlined new user registration flow.
+
 ![Signup Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/SignupPage.png)
 
-### 3. Home Page
+#### 3. **Home Page**
+Central hub displaying learning modules, highlights, and personalized overview.
+
 ![Home Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/HomePage.png)
 
-### 4. Searching in Home Page
+#### 4. **Search in Home Page**
+Advanced filtering and search functionality for topics and programs.
+
 ![Searching in Home Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/SearchinginHomePage.png)
 
-### 5. Program List Page
+#### 5. **Program List Page**
+Comprehensive view of all available learning programs.
+
 ![Program List Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/Program%20List%20Page.png)
 
-### 6. Program Details Page
+#### 6. **Program Details Page**
+In-depth exploration of selected programs with structured content.
+
 ![Program Details Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/ProgramDetailsPage.png)
 
-### 7. Profile Page
+#### 7. **Profile Page**
+User dashboard showcasing progress tracking, learning streaks, and achievements.
+
 ![Profile Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/ProgramDetailsPage.png)
 
-### 8. Settings Page
+#### 8. **Settings Page**
+Customization options including preferences, notifications, and theme selection.
+
 ![Settings Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/SettingsPage.png)
 
-### 9. Side Drawer
+#### 9. **Side Drawer / Navigation Drawer**
+Quick-access navigation menu for efficient app traversal.
+
 ![Side Drawer](https://github.com/IsiriBhatSM/Learn-E/blob/main/SideDrawer.png)
 
-### 10. About Us Page
+#### 10. **About Us Page**
+Brand mission statement and app purpose communication.
+
 ![About Us Page](https://github.com/IsiriBhatSM/Learn-E/blob/main/AboutUsPage.png)
 
 ---
 
-## 🎨 Experience Highlights
+### 🎯 Key Features Implemented
 
-- **Clean & distraction-free learning flow**  
-- **Gamified motivation** (progress, streak, rewards)  
-- **Accessible UI** (large fonts, clear contrast, readable content)  
-- **Instant visual + feedback-driven learning**
+- ✅ **Interactive Navigation** — Seamless flow between all 10 screens
+- ✅ **Gamified Learning Experience** — Progress tracking, streaks, and reward system
+- ✅ **Accessible Design** — Large fonts, high contrast, and readable content hierarchy
+- ✅ **Search & Filter Capabilities** — Enhanced content discoverability
+- ✅ **User Profile Management** — Comprehensive progress and achievement tracking
+- ✅ **Customizable Settings** — Personalized user experience options
+
+---
+
+### 🎨 Design Philosophy & Choices
+
+**Visual Identity:**
+- **Clean & Minimalist Interface** — Distraction-free learning environment prioritizing content focus
+- **Consistent Branding** — Unified color palette and typography across all screens
+- **Responsive Layouts** — Optimized Flutter widgets ensuring adaptability across devices
+
+**User Experience:**
+- **Intuitive Navigation** — Side drawer implementation for quick access to core features
+- **Feedback-Driven Design** — Instant visual responses to user interactions
+- **Gamification Elements** — Motivational features (streaks, achievements) to enhance engagement
+
+**Accessibility:**
+- **High Contrast Ratios** — Ensuring readability for all users
+- **Clear Typography** — Large, legible fonts with proper hierarchy
+- **Touch-Friendly Elements** — Appropriately sized interactive components
+
+---
+
+### 🔄 Navigation Flow
+```
+Login/Signup → Home → [Search/Programs/Profile/Settings]
+                ↓
+            Side Drawer ← → [About Us/Other Sections]
+                ↓
+         Program Details
+```
+
+**User Journey:**
+1. Users authenticate via Login/Signup
+2. Home screen serves as the central dashboard
+3. Side drawer provides quick navigation to all major sections
+4. Search functionality enables rapid content discovery
+5. Profile tracks progress and gamification elements
+6. Settings allows personalization of learning experience
+
+---
+
+### 📚 Learning Outcomes Achieved
+
+- ✅ **Wireframe Translation** — Successfully converted Week 1 wireframes into functional Flutter UI screens
+- ✅ **Navigation Implementation** — Developed comprehensive navigation system with drawer and screen transitions
+- ✅ **Branding Consistency** — Applied LEARN-E's visual identity across all interface elements
+- ✅ **User-Centric Design** — Built intuitive, structured mobile interfaces focused on learning experience
+- ✅ **Flutter Proficiency** — Gained hands-on experience with Flutter widgets, layouts, and state management
 
 ---
 
 
-## 📌 Week 2 Deliverables Completed
+### 💻 Technical Implementation
 
-✅ 10 interactive Flutter UI screens  
-✅ GitHub repository updated with meaningful commits  
-✅ README updated with screenshots section   
+**Framework:** Flutter (Dart)  
+**Platform:** Android (mobile-first)  
+**Navigation:** Named routes with drawer & screen transitions   
+**UI Architecture:** Reusable custom widgets with modular design  
+**Backend (Planned):** Firebase Auth, Firestore, Cloud Storage
 
 ---
+
+
+### 📌 Week 2 Deliverables Completed
+
+✅ 10 interactive Flutter UI screens with working navigation  
+✅ GitHub repository updated with meaningful, descriptive commits  
+✅ README documentation with comprehensive screenshots  
+✅ Design choices documented based on Week 1 wireframes  
+✅ Accessible, gamified learning interface implemented  
+
+---
+
 
 ## 🔗 Resources
 
@@ -180,10 +253,9 @@ The following **10 core prototype screens** were designed and implemented with w
 
 ---
 
-## 🌟 Vision
+### 🌟 Vision
 
 > “Delivering the world to you — one fact at a time.”  
-LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beautifully accessible. Thanks for your time.
+LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beautifully accessible through thoughtful design and engaging user experiences.Thanks for your time.
 
 ---
-
