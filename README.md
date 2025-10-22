@@ -48,6 +48,7 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
   Minimalist UI, gesture controls, and colorful visuals for an intuitive user experience.
 - **Offline Mode:**  
   Download lessons for uninterrupted access in low-connectivity areas.
+---
 
 ### ⚙️ Technical Features
 - **High Performance:** Optimized for Android with low latency and fast load times.  
@@ -86,10 +87,10 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 ### 🛠️ Tech Stack
 
 **Frontend:** Flutter (Dart)  
-**Platform:** Android (mobile first) 
-**Design Tools:** Figma  
+**Platform:** Android (mobile first)  
 **Backend (Planned):** Firebase / Cloud Sync (Auth, Firestore, Storage)  
 **Version Control:** Git & GitHub
+**Design Tools:** Figma 
 
 ---
 
@@ -102,7 +103,7 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 
 
 ----
-## Week-2 Deliverables:(UI Prototype Development)
+## Week-2 Deliverables:
 ----
 
 
@@ -224,7 +225,6 @@ Login/Signup → Home → [Search/Programs/Profile/Settings]
 
 ---
 
-
 ### 💻 Technical Implementation
 
 **Framework:** Flutter (Dart)  
@@ -234,7 +234,6 @@ Login/Signup → Home → [Search/Programs/Profile/Settings]
 **Backend (Planned):** Firebase Auth, Firestore, Cloud Storage
 
 ---
-
 
 ### 📌 Week 2 Deliverables Completed
 
@@ -246,7 +245,6 @@ Login/Signup → Home → [Search/Programs/Profile/Settings]
 
 ---
 
-
 ## 🔗 Resources
 
 - **GitHub Repository:** [Learn-E on GitHub](https://github.com/IsiriBhatSM/Learn-E.git)  
@@ -255,7 +253,8 @@ Login/Signup → Home → [Search/Programs/Profile/Settings]
 
 ### 🌟 Vision
 
-> “Delivering the world to you — one fact at a time.”  
+> “Delivering the world to you — one fact at a time.”
+>  
 LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beautifully accessible through thoughtful design and engaging user experiences.Thanks for your time.
 
 ---
