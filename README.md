@@ -98,7 +98,7 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 
 > “Delivering the world to you — one fact at a time.”  
 >
-LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age.
+    LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age.
 ---
 
 
