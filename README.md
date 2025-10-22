@@ -89,7 +89,7 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 **Frontend:** Flutter (Dart)  
 **Platform:** Android (mobile first)  
 **Backend (Planned):** Firebase / Cloud Sync (Auth, Firestore, Storage)  
-**Version Control:** Git & GitHub
+**Version Control:** Git & GitHub ,
 **Design Tools:** Figma 
 
 ---
@@ -98,13 +98,15 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 
 > “Delivering the world to you — one fact at a time.”  
 >
-> LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age.
+LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age.
+---
 
 
 
 ----
 ## Week-2 Deliverables:
 ----
+
 
 
 ### Overview
