@@ -13,14 +13,14 @@ class Content {
 
   Content({required this.type, required this.data});
 
-  factory Content.fromMap(Map<String, dynamic> map) {
+  factory Content.fromJson(Map<String, dynamic> json) {
     return Content(
-      type: ContentType.values.byName(map['type']),
-      data: map['data'],
+      type: ContentType.values.byName(json['type']),
+      data: json['data'],
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'type': type.name,
       'data': data,
@@ -29,40 +29,44 @@ class Content {
 }
 
 class Article {
+  final String id;
   final String title;
   final String category;
   final String description;
   final List<Content> contents;
 
   Article({
+    required this.id,
     required this.title,
     required this.category,
     required this.description,
     required this.contents,
   });
 
-  factory Article.fromMap(Map<String, dynamic> map) {
+  factory Article.fromJson(Map<String, dynamic> json) {
     List<Content> contentList = [];
-    if (map['contents'] != null) {
-      contentList = List<Map<String, dynamic>>.from(map['contents'])
-          .map((c) => Content.fromMap(c))
+    if (json['contents'] != null) {
+      contentList = List<Map<String, dynamic>>.from(json['contents'])
+          .map((c) => Content.fromJson(c))
           .toList();
     }
 
     return Article(
-      title: map['title'],
-      category: map['category'],
-      description: map['description'],
+      id: json['id'].toString(),
+      title: json['title'],
+      category: json['category'],
+      description: json['description'],
       contents: contentList,
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'title': title,
       'category': category,
       'description': description,
-      'contents': contents.map((c) => c.toMap()).toList(),
+      'contents': contents.map((c) => c.toJson()).toList(),
     };
   }
 }
