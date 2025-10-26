@@ -1,139 +1,141 @@
-/// A stateless widget that handles user signup, collecting profile information
-/// and navigating to the login screen upon success.
 import 'package:flutter/material.dart';
-import 'package:learn_e/data/profile_data.dart';
 
-class SignUpScreen extends StatelessWidget {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _dobController = TextEditingController(); // New for DOB
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
-  /// Creates a [SignUpScreen].
-  SignUpScreen({super.key});
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
 
-  /// Converts a month number to its corresponding name.
-  ///
-  /// [month] is the month number (1-12).
-  /// Returns the full month name as a [String].
-  static String monthName(int month) {
-    const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-    return months[month - 1];
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+  String name = '';
+  String email = '';
+  String password = '';
+  String confirmPassword = '';
+  bool _isSubmitting = false;
+
+  // Store submitted data temporarily
+  final List<Map<String, String>> _submittedUsers = [];
+
+  void _submitForm() async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+
+      setState(() {
+        _isSubmitting = true;
+      });
+
+      // Simulate network delay or registration process
+      await Future.delayed(const Duration(seconds: 2));
+
+      setState(() {
+        _isSubmitting = false;
+        _submittedUsers.add({
+          'name': name,
+          'email': email,
+        });
+      });
+
+      // Show success message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signup successful!')),
+      );
+
+      // Optionally clear the form
+      _formKey.currentState!.reset();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create Account'),
-        backgroundColor: Colors.deepOrange,
+        title: const Text('Sign Up'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
-              TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: 'Full Name',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person),
-                ),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Full Name'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Name cannot be empty';
+                  }
+                  return null;
+                },
+                onSaved: (value) => name = value!,
               ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
-                ),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Email'),
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Email cannot be empty';
+                  } else if (!value.contains('@')) {
+                    return 'Enter a valid email address';
+                  }
+                  return null;
+                },
+                onSaved: (value) => email = value!,
               ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _passwordController,
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _dobController,
-                decoration: InputDecoration(
-                  labelText: 'Date of Birth (DD MMMM YYYY)',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.calendar_today),
-                ),
-                readOnly: true,
-                onTap: () async {
-                  final DateTime? pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime(2000, 1, 1),
-                    firstDate: DateTime(1950),
-                    lastDate: DateTime.now(),
-                  );
-                  if (pickedDate != null) {
-                    _dobController.text =
-                        "${pickedDate.day} ${monthName(pickedDate.month)} ${pickedDate.year}";
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Password cannot be empty';
+                  } else if (value.length < 6) {
+                    return 'Password must be at least 6 characters';
                   }
+                  return null;
                 },
+                onSaved: (value) => password = value!,
               ),
-              SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  if (_nameController.text.isNotEmpty &&
-                      _emailController.text.isNotEmpty &&
-                      _passwordController.text.isNotEmpty &&
-                      _dobController.text.isNotEmpty) {
-                    Profile.updateProfile(
-                      username: _nameController.text,
-                      email: _emailController.text,
-                      dob: _dobController.text,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Account created successfully!')),
-                    );
-                    Navigator.pushReplacementNamed(context, '/login');
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Please fill all fields!')),
-                    );
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Confirm Password'),
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Confirm your password';
+                  } else if (value != password) {
+                    return 'Passwords do not match';
                   }
+                  return null;
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrange,
-                  minimumSize: Size(double.infinity, 50),
-                ),
-                child: Text('Sign Up', style: TextStyle(fontSize: 18)),
+                onSaved: (value) => confirmPassword = value!,
               ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Already have an account? "),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, '/login');
-                    },
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                        color: Colors.deepOrange,
-                        fontWeight: FontWeight.bold,
-                      ),
+              const SizedBox(height: 20),
+              _isSubmitting
+                  ? const Center(child: CircularProgressIndicator())
+                  : ElevatedButton(
+                      onPressed: _submitForm,
+                      child: const Text('Register'),
                     ),
+              const SizedBox(height: 20),
+              if (_submittedUsers.isNotEmpty) ...[
+                const Text(
+                  'Submitted Users:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _submittedUsers.length,
+                    itemBuilder: (context, index) {
+                      final user = _submittedUsers[index];
+                      return ListTile(
+                        title: Text(user['name']!),
+                        subtitle: Text(user['email']!),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ],
           ),
         ),
