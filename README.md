@@ -1,4 +1,4 @@
-# 📘 LEARN-E — Minimalist Educational App 
+<!-- # 📘 LEARN-E — Minimalist Educational App 
 
 ---
 
@@ -94,4 +94,48 @@ The app focuses on **clarity, motivation, and accessibility**, ensuring learners
 
 > “Delivering the world to you — one fact at a time.”  
 >
-> LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age.
+> LEARN-E aims to bridge the gap between curiosity and understanding, transforming how young learners engage with knowledge in the digital age. -->
+
+
+
+## 📦 Week 3: API Connection & Form Validation  
+
+### 🧩 Overview  
+In Week 3, the app became fully functional by connecting real data and adding an interactive form.  
+Program listings now fetch information dynamically from a local JSON file, and users can submit validated feedback directly through the app.
+
+---
+
+### 🚀 Key Changes  
+- **Connected Program Listing Screen**  
+  - Added `assets/programs.json` to store sample program data.  
+  - Implemented dynamic data loading using `FutureBuilder`.  
+  - Added loading spinner and error handling for better UX.  
+  - Linked list items to **Program Details** page via navigation.  
+
+- **Added Feedback Form**  
+  - Created `feedback_form.dart` using `Form` and `TextFormField` widgets.  
+  - Added validation rules (email must contain “@”, fields can’t be empty).  
+  - Implemented loading indicator (`CircularProgressIndicator`) during submission.  
+  - Displayed success message with `SnackBar` after successful validation.  
+  - Stored submitted feedback and displayed it back on-screen.  
+
+- **Updated pubspec.yaml**  
+  - Declared `assets/programs.json` under the `flutter:` assets section.  
+
+- **Navigation Updates**  
+  - Added routes for `/programs`, `/details`, and `/feedback` in `main.dart`.  
+  - Linked Home → Programs → Details → Feedback navigation flow.  
+
+---
+
+### 🧠 Learning Outcomes  
+- Integrated Flutter UI with JSON data.  
+- Built validated input forms.  
+- Handled asynchronous loading states and errors.  
+- Enhanced UX using SnackBars and progress indicators.  
+- Practiced clean Git workflow and documentation.  
+
+---
+
+### 💬 Commit Example  
