@@ -25,6 +25,9 @@ import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'screens/login_screen.dart';
 import 'screens/signup_screen.dart';
+import 'screens/feedback_form.dart';
+import 'screens/program_listing.dart';
+import 'screens/program_details.dart';
 import 'theme.dart';
 
 void main() {
@@ -45,6 +48,9 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignUpScreen(),
         '/home': (context) => const HomePage(),
+        '/programs': (context) => ProgramListingScreen(),
+        '/details': (context) => ProgramDetailsScreen(),
+        '/feedback': (context) => FeedbackForm(),
       },
     );
   }
