@@ -260,3 +260,94 @@ Login/Signup → Home → [Search/Programs/Profile/Settings]
 LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beautifully accessible through thoughtful design and engaging user experiences.Thanks for your time.
 
 ---
+
+#### Week-3 Updates:
+
+#### ✨ Key Enhancements
+
+This week marks a pivotal step forward in our app’s evolution, with robust functionality upgrades and refined user experience features.
+
+---
+
+#### 🚀 New Features
+
+### 🔗 Dynamic Program Integration  
+- Seamlessly connected Program Listing and Program Details screens to a JSON/mock API  
+- Enables real-time data fetching and dynamic content rendering
+
+### 🧠 Intelligent Form System  
+- Developed a comprehensive Feedback/Registration Form  
+- Integrated advanced validation logic to ensure accurate and secure user input
+
+---
+
+### 🛠 Technical Improvements
+
+⚡ Enhanced User Experience  
+- Smart loading indicators for smooth data retrieval  
+- Graceful error handling for API/JSON failures  
+- Clear, user-friendly error messages for improved usability
+
+---
+
+### 🎬 Live Demonstration
+
+Experience the latest features in action:  
+[Demo Video Link] – Showcasing dynamic program loading and form submission workflows
+
+---
+
+### 🚀 Quick Start Guide
+
+Prerequisites  
+- Flutter SDK (latest stable release)  
+- Dart SDK  
+- IDE: Android Studio or Visual Studio Code
+
+----
+
+### Installation & Execution
+
+`bash
+
+Clone the repository
+git clone <repository_url>
+
+Navigate to the project directory
+cd <project_directory>
+
+Install dependencies
+flutter pub get
+
+Launch the application
+flutter run
+`
+
+---
+
+### ✅ Completed This Week  
+- Program Listing JSON integration  
+- Dynamic Program Details implementation  
+- Feedback/Registration Form with validation  
+- Loading state management  
+- Comprehensive error handling system
+
+---
+
+### 🎯 Upcoming Milestones (Week 4)
+
+- Implementation of additional specialized forms  
+- Advanced UI/UX refinements  
+- Performance tuning and optimization  
+- Expansion of feature set
+
+---
+
+### 📊 Version Control Highlights
+
+Recent key commits include:  
+- Program Listing connected to live JSON data  
+- Feedback form with robust validation  
+- Smart loading indicators and error handling mechanisms
+
+---
