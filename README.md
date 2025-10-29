@@ -261,93 +261,78 @@ LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beau
 
 ---
 
-## Week-3 Updates:
+## Week-3 Updates
 
-#### ✨ Key Enhancements
+✨ **Key Enhancements**
+This week marks a pivotal step forward in our app’s evolution — delivering stronger functionality, smoother UX, and next-level polish.
 
-This week marks a pivotal step forward in our app’s evolution, with robust functionality upgrades and refined user experience features.
+## 🚀 New Features
 
----
+### 🔗 Dynamic Program Integration
 
-#### 🚀 New Features
+* Program Listing & Program Details screens now fully connected to a JSON/mock API
+* Supports real-time data fetching and dynamic UI rendering
 
-### 🔗 Dynamic Program Integration  
-- Seamlessly connected Program Listing and Program Details screens to a JSON/mock API  
-- Enables real-time data fetching and dynamic content rendering
+### 🧠 Intelligent Form System
 
-### 🧠 Intelligent Form System  
-- Developed a comprehensive Feedback/Registration Form  
-- Integrated advanced validation logic to ensure accurate and secure user input
+* Fully functional Feedback / Registration Form
+* Advanced validation for accurate & secure user input handling
 
----
+## 🛠 Technical Improvements
 
-### 🛠 Technical Improvements
+### ⚡ Enhanced User Experience
 
-⚡ Enhanced User Experience  
-- Smart loading indicators for smooth data retrieval  
-- Graceful error handling for API/JSON failures  
-- Clear, user-friendly error messages for improved usability
+* Smart loading indicators for seamless transitions
+* Fail-safe error handling for API / JSON failures
+* Clear, user-friendly error messages for better accessibility
 
----
-
-### 🎬 Live Demonstration
+## 🎬 Live Demonstration
 
 Experience the latest features in action:  
-https://drive.google.com/file/d/1Gvm6uSC3eX8wRDybcFXxZ_9_w4eqPzVQ/view?usp=sharing – Showcasing dynamic program loading and form submission workflows
+https://drive.google.com/file/d/1Gvm6uSC3eX8wRDybcFXxZ_9_w4eqPzVQ/view?usp=sharing – Showcasing dynamic program loading and form submission workflows.
 
 ---
 
-### 🚀 Quick Start Guide
+## 🚀 Quick Start Guide
 
-Prerequisites  
-- Flutter SDK (latest stable release)  
-- Dart SDK  
-- IDE: Android Studio or Visual Studio Code
+**Prerequisites**
 
-----
+* Flutter SDK — latest stable release
+* Dart SDK
+* IDE: Android Studio / VS Code
 
-### Installation & Execution
+**Installation & Execution**
 
-`bash
-
-Clone the repository
+```bash
 git clone <repository_url>
-
-Navigate to the project directory
 cd <project_directory>
-
-Install dependencies
 flutter pub get
-
-Launch the application
 flutter run
-`
+```
 
 ---
 
-### ✅ Completed This Week  
-- Program Listing JSON integration  
-- Dynamic Program Details implementation  
-- Feedback/Registration Form with validation  
-- Loading state management  
-- Comprehensive error handling system
+## ✅ Completed in Week-3
+
+* Program Listing JSON integration
+* Dynamic Program Details implementation
+* Feedback / Registration Form with validation
+* Loading state management
+* Full error handling system
+
+## 🎯 Upcoming in Week-4
+
+* Specialized form integrations
+* UI/UX refinement & animation polish
+* Performance optimization
+* Feature expansion
 
 ---
 
-### 🎯 Upcoming Milestones (Week 4)
+## 📊 Version Control Highlights
 
-- Implementation of additional specialized forms  
-- Advanced UI/UX refinements  
-- Performance tuning and optimization  
-- Expansion of feature set
+Recent commits include:
 
----
-
-### 📊 Version Control Highlights
-
-Recent key commits include:  
-- Program Listing connected to live JSON data  
-- Feedback form with robust validation  
-- Smart loading indicators and error handling mechanisms
-
----
+* Program Listing → Live JSON data
+* Robust validation for Feedback Form
+* Smart loading & graceful error fallback
