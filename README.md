@@ -263,8 +263,10 @@ LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beau
 
 ## Week-3 Updates
 
+
 ✨ **Key Enhancements**
 This week marks a pivotal step forward in our app’s evolution — delivering stronger functionality, smoother UX, and next-level polish.
+
 
 ## 🚀 New Features
 
@@ -273,10 +275,6 @@ This week marks a pivotal step forward in our app’s evolution — delivering s
 * Program Listing & Program Details screens now fully connected to a JSON/mock API
 * Supports real-time data fetching and dynamic UI rendering
 
-### 🧠 Intelligent Form System
-
-* Fully functional Feedback / Registration Form
-* Advanced validation for accurate & secure user input handling
 
 ## 🛠 Technical Improvements
 
@@ -286,10 +284,12 @@ This week marks a pivotal step forward in our app’s evolution — delivering s
 * Fail-safe error handling for API / JSON failures
 * Clear, user-friendly error messages for better accessibility
 
+
+
 ## 🎬 Live Demonstration
 
 Experience the latest features in action:  
-https://drive.google.com/file/d/1Gvm6uSC3eX8wRDybcFXxZ_9_w4eqPzVQ/view?usp=sharing – Showcasing dynamic program loading and form submission workflows.
+https://drive.google.com/file/d/1Gvm6uSC3eX8wRDybcFXxZ_9_w4eqPzVQ/view?usp=sharing – Showcasing dynamic program loading and form submission workflows
 
 ---
 
@@ -299,7 +299,7 @@ https://drive.google.com/file/d/1Gvm6uSC3eX8wRDybcFXxZ_9_w4eqPzVQ/view?usp=shari
 
 * Flutter SDK — latest stable release
 * Dart SDK
-* IDE: Android Studio / VS Code
+* IDE: Android Studio & VS Code
 
 **Installation & Execution**
 
@@ -316,13 +316,12 @@ flutter run
 
 * Program Listing JSON integration
 * Dynamic Program Details implementation
-* Feedback / Registration Form with validation
 * Loading state management
 * Full error handling system
 
 ## 🎯 Upcoming in Week-4
 
-* Specialized form integrations
+* Specialized feature integrations
 * UI/UX refinement & animation polish
 * Performance optimization
 * Feature expansion
@@ -334,5 +333,5 @@ flutter run
 Recent commits include:
 
 * Program Listing → Live JSON data
-* Robust validation for Feedback Form
-* Smart loading & graceful error fallback
+* Smart loading indicators & graceful error handling
+
