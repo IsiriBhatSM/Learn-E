@@ -263,8 +263,10 @@ LEARN-E aims to make curiosity rewarding, learning addictive, and knowledge beau
 
 ## Week-3 Updates
 
+
 ✨ **Key Enhancements**
 This week marks a pivotal step forward in our app’s evolution — delivering stronger functionality, smoother UX, and next-level polish.
+
 
 ## 🚀 New Features
 
