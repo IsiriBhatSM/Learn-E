@@ -4,7 +4,7 @@ import '../models/article.dart';
 
 class ArticleService {
   static const String _baseUrl =
-      'https://68fa60e6ef8b2e621e7fca83.mockapi.io/articles';
+      'https://68fb4f9f94ec96066025965b.mockapi.io/Articles';
 
   // Method to fetch all articles from the MockAPI
   static Future<List<Article>> fetchArticles() async {
