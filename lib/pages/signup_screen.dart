@@ -246,7 +246,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Account'),
+        title: const Text(
+          'Create Account',
+          style:TextStyle(
+            fontSize: 18.0,
+            fontWeight:FontWeight.bold,
+            color:Colors.white
+          )),
         backgroundColor: Colors.deepOrange,
       ),
       body: Padding(

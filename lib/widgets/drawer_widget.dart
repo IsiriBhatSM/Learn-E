@@ -5,15 +5,24 @@ import 'package:learn_e/pages/about_us_page.dart';
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const SizedBox(height: 150),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 60, 16, 20),
+            child: Image.asset(
+              'assets/logo/learn-e_orange.png',
+              height: 80,
+              fit: BoxFit.contain,
+            ),
+          ),
+          // About Us
           ListTile(
-            leading: null, // Removed the icon by setting leading to null
+            leading: null,
             title: const Text(
               'About us',
               style: TextStyle(
@@ -22,6 +31,7 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const AboutUsPage()),

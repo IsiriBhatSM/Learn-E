@@ -14,7 +14,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Image.asset(
+          'assets/logo/learn-e_white.png',
+          height: 25,
+        ),
+        centerTitle: false, // false = align left
+        elevation: 0,
+        // title: const Text('Home'),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: SingleChildScrollView(
@@ -24,7 +30,7 @@ class HomePage extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(16.0),
               child: Text(
-                'Highlights',
+                'Did you know ?',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
               ),
             ),
