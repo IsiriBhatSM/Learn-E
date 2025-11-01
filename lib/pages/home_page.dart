@@ -1,10 +1,10 @@
 // lib/pages/home_page.dart
 import 'package:flutter/material.dart';
-import 'package:learn_e/widgets/navigation_bar.dart';
+// import 'package:learn_e/widgets/navigation_bar.dart';
 import 'package:learn_e/widgets/category_search_bar.dart';
 import 'package:learn_e/widgets/home_highlights.dart';
 import 'package:learn_e/widgets/drawer_widget.dart';
-import 'package:learn_e/EVA/floating_eva_button.dart';   // ← EVA button
+import 'package:learn_e/EVA/floating_eva_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -55,8 +55,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const CategorySearchBar(),
-
-                // Optional space at bottom
                 const SizedBox(height: 20),
               ],
             ),

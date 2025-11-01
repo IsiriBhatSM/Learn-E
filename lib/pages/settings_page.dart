@@ -1,7 +1,7 @@
 // lib/pages/settings_page.dart
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/login_screen.dart';
-import 'package:learn_e/widgets/navigation_bar.dart';
+// import 'package:learn_e/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:learn_e/theme_provider.dart';
 
