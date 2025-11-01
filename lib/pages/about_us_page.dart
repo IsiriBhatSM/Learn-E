@@ -10,7 +10,7 @@ class AboutUsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('About Us'),
+        // title: Text('About Us'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
