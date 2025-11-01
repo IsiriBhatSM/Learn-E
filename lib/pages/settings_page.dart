@@ -1,31 +1,23 @@
-/// A stateful widget that serves as the settings page, allowing users to toggle
-/// notifications and dark mode, and log out.
-///
-/// This page includes a list view for settings options and a navigation bar at the bottom.
+// lib/pages/settings_page.dart
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/login_screen.dart';
 import 'package:learn_e/widgets/navigation_bar.dart';
+import 'package:provider/provider.dart';
+import 'package:learn_e/theme_provider.dart';
 
 class SettingsPage extends StatefulWidget {
-  /// Creates a [SettingsPage].
   const SettingsPage({super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-/// The state class for [SettingsPage], managing settings state such as notifications
-/// and dark mode toggles.
 class _SettingsPageState extends State<SettingsPage> {
-  bool _notificationsEnabled = true;
-  bool _darkMode = false; // Local toggle only
+  // bool _notificationsEnabled = true;
 
   @override
   Widget build(BuildContext context) {
-    /// Builds the settings page UI with a list of configurable options and a navigation bar.
-    ///
-    /// [context] is the BuildContext for the widget tree.
-    /// Returns a [Scaffold] containing the settings interface and navigation.
+    final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -33,62 +25,39 @@ class _SettingsPageState extends State<SettingsPage> {
         padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
-            Center(
-              child: Text(
-                "Settings",
-                style: TextStyle(fontSize: 40),
-              ),
+            const Center(
+              child: Text("Settings", style: TextStyle(fontSize: 40)),
             ),
-
-            // Notifications toggle
+            const SizedBox(height: 20),
+            // SwitchListTile(
+            //   title: const Text("Notifications"),
+            //   value: _notificationsEnabled,
+            //   onChanged: (v) => setState(() => _notificationsEnabled = v),
+            // ),
             SwitchListTile(
-              title: Text("Notifications"),
-              value: _notificationsEnabled,
-              onChanged: (value) {
-                setState(() {
-                  _notificationsEnabled = value;
-                });
-              },
+              title: const Text("Dark Mode"),
+              value: themeProvider.isDark,
+              onChanged: (v) => themeProvider.toggleTheme(),
             ),
-
-            // Dark mode toggle
-            SwitchListTile(
-              title: Text("Dark Mode"),
-              value: _darkMode,
-              onChanged: (value) {
-                setState(() {
-                  _darkMode = value;
-                });
-              },
-            ),
-
             const SizedBox(height: 40),
-
-            // Logout button
             ElevatedButton.icon(
-              onPressed: () {
-                /// Handles the logout action by navigating to the login screen.
-                ///
-                /// Replaces the current route with the login screen.
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                );
-              },
+              onPressed: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => LoginScreen()),
+              ),
               icon: const Icon(Icons.logout),
               label: const Text("Logout"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: theme.primaryColor,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                textStyle:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
+            const SizedBox(height: 120),
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBarWidget(),
+      // bottomNavigationBar: NavigationBarWidget(),
     );
   }
 }

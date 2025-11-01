@@ -1,4 +1,4 @@
-// home_highlights.dart
+// lib/widgets/home_highlights.dart
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/program_detail_page.dart';
 import 'package:learn_e/models/article.dart';
@@ -23,9 +23,9 @@ class _HomeHighlightsState extends State<HomeHighlights> {
   String getFirstFiveWords(String title) {
     final words = title.split(' ');
     if (words.length <= 5) {
-      return title + ' ... tap to read more';
+      return '$title ... tap to read more';
     }
-    return words.sublist(0, 5).join(' ') + ' ... tap to read more';
+    return '${words.sublist(0, 5).join(' ')} ... tap to read more';
   }
 
   @override
@@ -33,18 +33,23 @@ class _HomeHighlightsState extends State<HomeHighlights> {
     return SizedBox(
       height: 150,
       child: FutureBuilder<List<Article>>(
-        future: ArticleService.fetchArticles(), // fetch all articles
+        future: ArticleService.fetchArticles(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error fetching highlights: ${snapshot.error}'));
+            return Center(
+              child: Text(
+                'Error: ${snapshot.error}',
+                style: const TextStyle(color: Colors.red),
+              ),
+            );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(child: Text('No highlights available.'));
           }
 
-          // Randomly select 5 unique articles
-          List<Article> highlightArticles = List<Article>.from(snapshot.data!);
+          // Shuffle and pick 5 random articles
+          List<Article> highlightArticles = List.from(snapshot.data!);
           highlightArticles.shuffle();
           highlightArticles = highlightArticles.take(5).toList();
 
@@ -67,7 +72,10 @@ class _HomeHighlightsState extends State<HomeHighlights> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProgramDetailsPage(article: article),
+                          builder: (context) => ProgramDetailsPage(
+                            article: article,
+                            category: article.category, // ← CORRECT: uses article's own category
+                          ),
                         ),
                       );
                     },
@@ -88,23 +96,26 @@ class _HomeHighlightsState extends State<HomeHighlights> {
                         borderRadius: BorderRadius.circular(16),
                         child: Stack(
                           children: [
+                            // Background Image (first image in content)
                             if (article.contents.isNotEmpty)
                               ...article.contents.map((content) {
                                 if (content.type == ContentType.image) {
                                   return Image.network(
                                     content.data,
                                     width: 140,
-                                    height: 120,
+                                    height: 140,
                                     fit: BoxFit.cover,
                                     loadingBuilder: (context, child, loadingProgress) {
                                       if (loadingProgress == null) return child;
-                                      return const Center(child: CircularProgressIndicator());
+                                      return const Center(
+                                        child: CircularProgressIndicator(strokeWidth: 2),
+                                      );
                                     },
                                     errorBuilder: (context, error, stackTrace) {
                                       return Image.asset(
                                         'assets/images/geography.png',
                                         width: 140,
-                                        height: 120,
+                                        height: 140,
                                         fit: BoxFit.cover,
                                       );
                                     },
@@ -116,9 +127,11 @@ class _HomeHighlightsState extends State<HomeHighlights> {
                               Image.asset(
                                 'assets/images/geography.png',
                                 width: 140,
-                                height: 120,
+                                height: 140,
                                 fit: BoxFit.cover,
                               ),
+
+                            // Dark overlay + title
                             Container(
                               color: Colors.black.withOpacity(0.4),
                               child: Padding(
@@ -134,7 +147,7 @@ class _HomeHighlightsState extends State<HomeHighlights> {
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      maxLines: 1,
+                                      maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ],

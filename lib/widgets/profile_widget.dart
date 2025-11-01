@@ -79,7 +79,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Profile details below the image
+                // gives profile details below the image
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

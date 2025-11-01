@@ -1,3 +1,4 @@
+// lib/widgets/category_search_bar.dart
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/program_list_page.dart';
 
@@ -79,7 +80,7 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
         ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          height: 400,
+          height: 458,
           child: ListView.builder(
             itemCount: _filteredCategories.length,
             itemBuilder: (context, index) {
