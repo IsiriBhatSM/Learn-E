@@ -62,11 +62,11 @@
 <!--- Connected **Firebase backend** for real API integration  -->
 <!--- Tested data fetching and backend connectivity for program screens  -->
 <!---->
-<!------->
-<!---->
-<!--> ✅ **Next Week Plan:**  -->
-<!--> Finalize Firebase integration, clean JSON structure, and polish UI for submission.-->
-<!---->
+<!--<!--<!------->-->-->
+<!--<!--<!---->-->-->
+<!--<!--<!-- **Next Week Plan:**  -->-->-->-->
+<!--<!--<!--inalize Firebase integration, clean JSON structure, and polish UI for submission.-->-->-->-->
+<!--<!--<!---->-->-->
 
 
 
