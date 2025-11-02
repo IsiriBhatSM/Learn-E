@@ -55,6 +55,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '286359690783',
     projectId: 'learn-e-639fc',
     storageBucket: 'learn-e-639fc.firebasestorage.app',
+    databaseURL: 'https://learn-e-639fc-default-rtdb.asia-southeast1.firebasedatabase.app/'
   );
 
   static const FirebaseOptions web = FirebaseOptions(
@@ -64,6 +65,7 @@ class DefaultFirebaseOptions {
     projectId: 'learn-e-639fc',
     authDomain: 'learn-e-639fc.firebaseapp.com',
     storageBucket: 'learn-e-639fc.firebasestorage.app',
+    databaseURL: 'https://learn-e-639fc-default-rtdb.asia-southeast1.firebasedatabase.app/'
   );
 
 }

@@ -1,23 +1,52 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/article.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class ArticleService {
-  static const String _baseUrl =
-      'https://68fb4f9f94ec96066025965b.mockapi.io/Articles';
+  static final DatabaseReference _dbRef = FirebaseDatabase.instance.ref().child(
+      'articles'); // static Database reference for Firebase Realtime Database
 
-  // Method to fetch all articles from the MockAPI
+  // Static method to fetch all articles from the firebase database
   static Future<List<Article>> fetchArticles() async {
     try {
-      final response = await http.get(Uri.parse(_baseUrl));
+      final snapshot = await _dbRef.get();
 
-      if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body);
-        return data.map((jsonItem) => Article.fromJson(jsonItem)).toList();
-      } else {
-        throw Exception(
-            'Failed to load articles. Status code: ${response.statusCode}');
-      }
+      if (snapshot.exists && snapshot.value != null) {
+        final data = snapshot.value;
+
+        if (data is List) {
+          // if firebase returns a List
+          return data.where((item) => item != null).map((item) {
+            final value = Map<String, dynamic>.from(item as Map);
+
+            // Safely convert contents
+            if (value['contents'] is List) {
+              value['contents'] = (value['contents'] as List)
+                  .map((i) => Map<String, dynamic>.from(i as Map))
+                  .toList();
+            }
+
+            return Article.fromJson(value);
+          }).toList();
+        } else if (data is Map) {
+          // if firebase returns a Map
+          return data.entries.map((entry) {
+            final key = entry.key.toString();
+            final value = Map<String, dynamic>.from(entry.value as Map);
+
+            // Safely convert contents
+            if (value['contents'] is List) {
+              value['contents'] = (value['contents'] as List)
+                  .map((i) => Map<String, dynamic>.from(i as Map))
+                  .toList();
+            }
+
+            return Article.fromJson({'id': key, ...value});
+          }).toList();
+        } 
+      } 
+      return []; // fallback: empty list
     } catch (e) {
       print('Error fetching articles: $e');
       return [];
@@ -27,13 +56,12 @@ class ArticleService {
   // Method to fetch a single article by ID
   static Future<Article?> fetchArticleById(String id) async {
     try {
-      final response = await http.get(Uri.parse('$_baseUrl/$id'));
+      final snapshot = await _dbRef.child(id).get();
 
-      if (response.statusCode == 200) {
-        final json = jsonDecode(response.body);
-        return Article.fromJson(json);
+      if (snapshot.exists) {
+        final data = Map<String, dynamic>.from(snapshot.value as Map);
+      return Article.fromJson({'id': id, ...data});
       } else {
-        print('Error: Status code ${response.statusCode}');
         return null; // fallback: null
       }
     } catch (e) {
