@@ -191,6 +191,14 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
         return 'assets/images/technology.png';
       case 'health':
         return 'assets/images/health.jpg';
+      case 'education':
+        return 'assets/images/education.png';
+      case 'social studies':
+        return 'assets/images/social_studies.png';
+      case 'hobby':
+        return 'assets/images/hobby.png';
+      case 'art':
+        return 'assets/images/art.png';
       default:
         return 'assets/images/default.jpg';
     }
