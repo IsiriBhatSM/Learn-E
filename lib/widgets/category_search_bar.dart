@@ -1,6 +1,7 @@
 // lib/widgets/category_search_bar.dart
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/program_list_page.dart';
+import '../data/categories_data.dart';
 
 class CategorySearchBar extends StatefulWidget {
   const CategorySearchBar({super.key});
@@ -12,23 +13,37 @@ class CategorySearchBar extends StatefulWidget {
 class _CategorySearchBarState extends State<CategorySearchBar> {
   final TextEditingController _controller = TextEditingController();
   String _searchQuery = '';
+  List<String>  _allCategories = [];
+  List<String> _filteredCategories = [];
+  bool _isLoading = true;
 
-  final List<Map<String, String>> _allCategories = [
-    {'title': 'Geography', 'image': 'assets/images/geography.png'},
-    {'title': 'History', 'image': 'assets/images/history.png'},
-    {'title': 'Philosophy', 'image': 'assets/images/philosophy.png'},
-    {'title': 'Science', 'image': 'assets/images/science.png'},
-    {'title': 'Technology', 'image': 'assets/images/technology.png'},
-    {'title': 'Health', 'image': 'assets/images/health.jpg'}, // Updated to .jpg
-  ];
 
-  late List<Map<String, String>> _filteredCategories;
+  // final List<Map<String, String>> _allCategories = [
+  //   {'title': 'Geography', 'image': 'assets/images/geography.png'},
+  //   {'title': 'History', 'image': 'assets/images/history.png'},
+  //   {'title': 'Philosophy', 'image': 'assets/images/philosophy.png'},
+  //   {'title': 'Science', 'image': 'assets/images/science.png'},
+  //   {'title': 'Technology', 'image': 'assets/images/technology.png'},
+  //   {'title': 'Health', 'image': 'assets/images/health.jpg'}, // Updated to .jpg
+  // ];
+
+  // late List<Map<String, String>> _filteredCategories;
 
   @override
   void initState() {
     super.initState();
-    _filteredCategories = List.from(_allCategories);
+    _loadCategories();
+    // _filteredCategories = List.from(_allCategories);
     _controller.addListener(_onSearchChanged);
+  }
+
+  Future<void> _loadCategories() async {
+    final categories = await CategoryService.fetchCategories();
+    setState(() {
+      _allCategories = categories;
+      _filteredCategories = List.from(categories);
+      _isLoading = false;
+    });
   }
 
   @override
@@ -43,10 +58,9 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
       if (_searchQuery.isEmpty) {
         _filteredCategories = List.from(_allCategories);
       } else {
-        _filteredCategories = _allCategories.where((category) {
-          final title = category['title']!.toLowerCase();
-          return title.startsWith(_searchQuery);
-        }).toList();
+        _filteredCategories = _allCategories
+            .where((category) => category.toLowerCase().startsWith(_searchQuery))
+            .toList();
       }
     });
   }
@@ -54,6 +68,14 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    if (_isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (_filteredCategories.isEmpty) {
+      return const Center(child: Text('No categories found.'));
+    }
 
     return Column(
       children: [
@@ -84,13 +106,16 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
           child: ListView.builder(
             itemCount: _filteredCategories.length,
             itemBuilder: (context, index) {
-              final category = _filteredCategories[index];
+              final raw = _filteredCategories[index];
+              // final title1 = raw is String ? raw : (raw is Map && raw.contains('name') ? raw['name'].toString(): 'Unknown');
+              final title = _filteredCategories[index];
+              final imagepath = _getImageForCategory(title);
               return GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ProgramListPage(selectedCategory: category['title']!),
+                      builder: (context) => ProgramListPage(selectedCategory: title),
                     ),
                   ).then((value) {
                     setState(() {
@@ -119,12 +144,12 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
-                            category['image']!,
+                            imagepath,
                             width: 90,
                             height: 90,
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
-                              print('Image load error for ${category['title']}: $error');
+                              print('Image load error for $title: $error');
                               return Container(color: Colors.grey); // Fallback if image fails
                             },
                           ),
@@ -133,7 +158,7 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
                       const SizedBox(width: 16),
                       Expanded(
                         child: Text(
-                          category['title']!,
+                          title,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -149,5 +174,33 @@ class _CategorySearchBarState extends State<CategorySearchBar> {
         ),
       ],
     );
+  }
+
+  //Helper to match Firebase category names with local images
+  String _getImageForCategory(String title) {
+    switch (title.toLowerCase()) {
+      case 'geography':
+        return 'assets/images/geography.png';
+      case 'history':
+        return 'assets/images/history.png';
+      case 'philosophy':
+        return 'assets/images/philosophy.png';
+      case 'science':
+        return 'assets/images/science.png';
+      case 'technology':
+        return 'assets/images/technology.png';
+      case 'health':
+        return 'assets/images/health.jpg';
+      case 'education':
+        return 'assets/images/education.png';
+      case 'social studies':
+        return 'assets/images/social_studies.png';
+      case 'hobby':
+        return 'assets/images/hobby.png';
+      case 'art':
+        return 'assets/images/art.png';
+      default:
+        return 'assets/images/default.jpg';
+    }
   }
 }
