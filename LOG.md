@@ -72,7 +72,7 @@
 
 # 🧩 Project Contribution Log
 
-This file documents weekly progress and individual contributions made by all team members throughout the Mobile App Development with Flutter internship project.
+This file documents weekly progress and individual contributions made by all team members throughout the **Mobile App Development with Flutter** internship project.
 
 ---
 
@@ -106,4 +106,15 @@ This file documents weekly progress and individual contributions made by all tea
 
 ---
 
-✅ *Week 4 Log*
+## 🗓️ Week 4 — Firebase Integration & Advanced Features
+**Focus:** Integrating Firebase backend, refining UI, and adding new functional features.
+
+- **Mainuddin:** Reviewed previous commits and created the comprehensive `log.md` (contribution log) file summarizing all progress.  
+- **Saba:** Structured articles into organized categories, enhancing content clarity and adding additional article types for better user navigation.  
+- **Isiri:** Created the **Firebase project** and integrated the **Realtime Database** with the app. Developed methods to fetch articles and categories from Firebase, added validation to the Login page, and made UI improvements in the Signup screen for better appearance.  
+- **Abrar:** Integrated **AI Customer Support (EVA)** into the app, added app logos, implemented a **functional Bookmark feature**, enabled **Dark Mode**, and developed a **Feedback/Rating screen** for articles. Added a **“Facts Read” counter** to the Profile page and refined UI across the app for a polished appearance.
+
+<!-- ---
+
+> ✅ **Next Steps:**  
+> Continue Firebase testing, refine category structure, and finalize UI polish for project submission. -->
