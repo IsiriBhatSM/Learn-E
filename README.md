@@ -43,6 +43,9 @@ flutter run
 
 ---
 
+
+
+**## 🚀 How to Run the App**
 ## 💾 GitHub Repository
 
 👉 GitHub Repository (Final Version)
