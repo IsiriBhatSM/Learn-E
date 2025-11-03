@@ -26,19 +26,16 @@ The app features smooth navigation, consistent branding, and Firebase integratio
 
 ---
 
-## 🚀 How to Run the App
-
-```bash
-# Clone the repository
+# 1. Clone the repository
 git clone <your-repo-link>
 
-# Navigate into the project folder
+# 2. Navigate into the project folder
 cd learn-e
 
-# Install dependencies
+# 3. Install dependencies
 flutter pub get
 
-# Run the app
+# 4. Run the app
 flutter run
 
 
@@ -50,7 +47,7 @@ flutter run
 
 🎥 Demo Video
 
-🔗 Click here to watch the Learn-E Demo Video
+🔗 https://drive.google.com/file/d/1yeub682yNWKI9h6pCMnu4d4aR330NzNO/view?usp=sharing
 
 
 
@@ -123,7 +120,21 @@ We learned how to design, build, and deploy an app collaboratively using Flutter
 
 📸 Screenshots
 
-📎 Demo screenshots will be added here later.
+📎Login Screen
+![Login](https://github.com/user-attachments/assets/b0cdb9f8-9cb0-41ff-9116-edf5f892bb75)
+
+📎Home Screen
+![home](https://github.com/user-attachments/assets/8e06e8d7-2585-439d-8285-8b5025170e1e)
+
+📎Program Listing
+![Program Listing](https://github.com/user-attachments/assets/191b45db-8997-46b0-ab9f-e80d2ce934a4)
+
+📎Program Details
+![Program Details](https://github.com/user-attachments/assets/d1c81852-1261-47d9-a8c0-a96cd45bcf7d)
+
+📎Feedback Form
+![Feedback Form](https://github.com/user-attachments/assets/0a53a487-9038-49ca-9969-fdce1f0f18dd)
+
 
 #### 🏁 Conclusion
 
