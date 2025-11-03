@@ -1,13 +1,10 @@
-// lib/EVA/eva_agent.dart
 import 'dart:convert';
+import 'dart:async';  // ← ADD THIS LINE
 import 'package:http/http.dart' as http;
-import 'dart:async';
 
 class EVAAgent {
-  static const String _url =
-      "https://eva-support-bot.onrender.com/webhook/eva-chat";
+  static const String _url = "https://urijah-communionable-defiantly.ngrok-free.dev/webhook/eva";
 
-  /// Sends a user message to EVA and returns the response.
   static Future<String> ask(String userMessage) async {
     if (userMessage.trim().isEmpty) return "Please ask something!";
 
@@ -27,11 +24,11 @@ class EVAAgent {
         return "Server error: ${response.statusCode}";
       }
     } on TimeoutException {
-      return "EVA is taking a nap (free tier). Try again in 10s.";
+      return "EVA is taking a moment, please wait!";
     } on http.ClientException {
       return "Network issue. Check your connection.";
     } catch (e) {
       return "Error: $e";
     }
   }
-}
+} 
