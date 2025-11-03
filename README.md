@@ -40,5 +40,3 @@ flutter pub get
 
 # Run the app
 flutter run
-
----
