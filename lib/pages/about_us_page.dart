@@ -45,7 +45,7 @@ class AboutUsPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'This app was made by: Abrar, Isiri, Mainul, and Saba',
+                'This app was made by: Abrar, Isiri, Mainuddin, and Saba',
                 style: theme.textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
