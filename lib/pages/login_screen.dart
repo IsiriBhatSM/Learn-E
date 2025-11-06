@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/signup_screen.dart';
 import 'package:learn_e/pages/first_page.dart';
+import '../data/profile_data.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,11 +17,58 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscurePassword = true;
   bool _isLoading = false;
 
-  void _login() async {
+  //Email validation using regex
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailRegex.hasMatch(email);
+  }
+
+  // Password validation (at least 6 chars)
+  bool _isValidPassword(String password) {
+    return password.length >= 6;
+  }
+
+  Future<void> _login() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    //  Validation checks
+    if (email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill in all fields.')),
+      );
+      return;
+    }
+    if (!_isValidEmail(email)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a valid email address.')),
+      );
+      return;
+    }
+    if (!_isValidPassword(password)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Password must be at least 6 characters long.')),
+      );
+      return;
+    }
+
+    // Simulated login
     setState(() => _isLoading = true);
     await Future.delayed(const Duration(seconds: 1));
     setState(() => _isLoading = false);
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const FirstPage()));
+
+    // Update profile
+    Profile.updateProfile(
+      username: email.split('@')[0], // username inferred from email
+      email: email,
+      dob: null,
+    );
+
+    // Navigate after login
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const FirstPage()),
+    );
   }
 
   @override
@@ -80,7 +128,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(30),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -101,13 +152,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       _obscurePassword ? Icons.visibility_off : Icons.visibility,
                       color: theme.primaryColor,
                     ),
-                    onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                    onPressed: () =>
+                        setState(() => _obscurePassword = !_obscurePassword),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
@@ -121,31 +176,49 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: theme.primaryColor,
                     foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
                     elevation: 3,
                   ),
                   child: _isLoading
                       ? const SizedBox(
                           height: 24,
                           width: 24,
-                          child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 2,
+                          ),
                         )
-                      : const Text('Log In', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      : const Text(
+                          'Log In',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ),
               const SizedBox(height: 20),
 
-              // SIGN UP LINK — FIXED: Now visible in dark mode
+              // SIGN UP LINK
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account? ", style: TextStyle(color: textColor)),
+                  Text(
+                    "Don't have an account? ",
+                    style: TextStyle(color: textColor),
+                  ),
                   GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SignUpScreen())),
-                    child: Text(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const SignUpScreen(),
+                      ),
+                    ),
+                    child: const Text(
                       'Sign Up',
                       style: TextStyle(
-                        color: Colors.deepOrange, 
+                        color: Colors.deepOrange,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -20,6 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _dobController = TextEditingController();
 
   bool _isSubmitting = false;
+  
 
   // Helper to format month name (Jan, Feb, …)
   String monthName(int month) {
@@ -67,9 +68,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white70 : Colors.black87;
+    final hintColor = isDark ? Colors.white54 : Colors.black54;
 
     return Scaffold(
       appBar: AppBar(
@@ -85,11 +92,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 // Full Name
                 TextFormField(
+                  style: TextStyle(color: textColor),
                   controller: _nameController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(color: hintColor),
                     labelText: 'Full Name',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
+                    prefixIcon: const Icon(Icons.person),
                   ),
                   validator: (v) =>
                       v?.trim().isEmpty ?? true ? 'Name cannot be empty' : null,
@@ -98,12 +113,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 // Email
                 TextFormField(
+                  style: TextStyle(color: textColor),
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(color: hintColor),
                     labelText: 'Email',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.email),
+                    border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
+                    prefixIcon: const Icon(Icons.email),
                   ),
                   validator: (v) {
                     if (v?.trim().isEmpty ?? true) return 'Email cannot be empty';
@@ -115,12 +138,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 // Password
                 TextFormField(
+                  style: TextStyle(color: textColor),
                   controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
+                  obscureText: _obscurePassword,
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(color: hintColor),
                     labelText: 'Password',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      color: theme.primaryColor,
+                    ),
+                    onPressed: () =>
+                        setState(() => _obscurePassword = !_obscurePassword),
+                  ),
                   ),
                   validator: (v) =>
                       (v?.length ?? 0) < 6 ? 'Password must be ≥6 characters' : null,
@@ -129,12 +168,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 // Confirm Password
                 TextFormField(
+                  style: TextStyle(color: textColor),
                   controller: _confirmPasswordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
+                  obscureText: _obscureConfirmPassword,
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(color: hintColor),
                     labelText: 'Confirm Password',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.lock_outline),
+                    border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
+                    prefixIcon: const Icon(Icons.lock_outline),
+                    suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                      color: theme.primaryColor,
+                    ),
+                    onPressed: () =>
+                        setState(() => _obscureConfirmPassword = !_obscureConfirmPassword),
+                  ),
                   ),
                   validator: (v) {
                     if (v != _passwordController.text) return 'Passwords do not match';
@@ -145,12 +200,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 // Date of Birth
                 TextFormField(
+                  style: TextStyle(color: textColor),
                   controller: _dobController,
                   readOnly: true,
-                  decoration: const InputDecoration(
-                    labelText: 'Date of Birth (DD MMMM YYYY)',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.calendar_today),
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(color: hintColor),
+                    labelText: 'Date of Birth (DD MM YYYY)',
+                    border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
+                    prefixIcon: const Icon(Icons.calendar_today),
                   ),
                   onTap: () async {
                     final DateTime? picked = await showDatePicker(
@@ -177,11 +240,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: ElevatedButton(
                           onPressed: _submitForm,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFFC603F),
+                            backgroundColor: theme.primaryColor,
+                    foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
+                           shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    elevation: 3,
                           ),
                           child: const Text(
                             'Sign Up',

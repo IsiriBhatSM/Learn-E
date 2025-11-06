@@ -23,7 +23,7 @@ class _HomeHighlightsState extends State<HomeHighlights> {
   String getFirstFiveWords(String title) {
     final words = title.split(' ');
     if (words.length <= 5) {
-      return '$title ... tap to read more';
+      return '$title ... ';
     }
     return '${words.sublist(0, 5).join(' ')} ... tap to read more';
   }

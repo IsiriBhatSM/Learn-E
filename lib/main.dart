@@ -12,8 +12,14 @@ import 'package:learn_e/pages/settings_page.dart';
 // import 'package:learn_e/pages/program_detail_page.dart';
 // import 'package:learn_e/pages/feedback_page.dart';
 import 'package:learn_e/pages/about_us_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),
