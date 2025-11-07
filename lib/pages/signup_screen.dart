@@ -1,4 +1,5 @@
 // lib/pages/signup_screen.dart
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_e/data/profile_data.dart';
 // import 'package:learn_e/pages/home_page.dart';
@@ -34,8 +35,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Future<void> _submitForm() async {
     if (!_formKey.currentState!.validate()) return;
 
-    setState(() => _isSubmitting = true);
+    try{
+      // setState(() => _isSubmitting = true);
 
+
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      
     // Simulate network delay
     await Future.delayed(const Duration(seconds: 2));
 
@@ -56,7 +64,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     // Navigate to Home (replaced login stack)
     Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
-  }
+  }on FirebaseAuthException catch (e) {
+      setState(() => _isSubmitting = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.message ?? 'Signup failed')),
+      );
+    }
+}
 
   @override
   void dispose() {
