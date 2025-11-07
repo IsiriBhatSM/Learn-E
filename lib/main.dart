@@ -1,16 +1,16 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:learn_e/theme_provider.dart'; // ← Your file next to main.dart
+import 'package:learn_e/theme_provider.dart';
 import 'package:learn_e/pages/first_page.dart';
 import 'package:learn_e/pages/login_screen.dart';
 import 'package:learn_e/pages/signup_screen.dart';
-import 'package:learn_e/pages/home_page.dart';
+// import 'package:learn_e/pages/home_page.dart';
 import 'package:learn_e/pages/profile_page.dart';
 import 'package:learn_e/pages/settings_page.dart';
-import 'package:learn_e/pages/program_list_page.dart';
-import 'package:learn_e/pages/program_detail_page.dart';
-import 'package:learn_e/pages/feedback_page.dart';
+// import 'package:learn_e/pages/program_list_page.dart';
+// import 'package:learn_e/pages/program_detail_page.dart';
+// import 'package:learn_e/pages/feedback_page.dart';
 import 'package:learn_e/pages/about_us_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -43,7 +43,7 @@ class LearnEApp extends StatelessWidget {
           routes: {
             '/login': (context) =>  LoginScreen(),
             '/signup': (context) => const SignUpScreen(),
-            '/home': (context) => const FirstPage(), // Your main navigation hub
+            '/home': (context) => const FirstPage(), //main navigation hub
             '/profile': (context) => const ProfilePage(),
             '/settings': (context) => const SettingsPage(),
             '/about': (context) => const AboutUsPage(),

@@ -20,12 +20,10 @@ class _FloatingEVAButtonState extends State<FloatingEVAButton> {
 
   void _toggleChat() {
     if (_overlayEntry != null) {
-      // Close chat
       _overlayEntry!.remove();
       _overlayEntry = null;
       setState(() {});
     } else {
-      // Open chat as TRUE OVERLAY
       _overlayEntry = OverlayEntry(
         builder: (context) => Positioned(
           bottom: 80,
@@ -52,7 +50,6 @@ class _FloatingEVAButtonState extends State<FloatingEVAButton> {
           ),
         ),
       );
-      
       Overlay.of(context).insert(_overlayEntry!);
       setState(() {});
     }
@@ -65,8 +62,8 @@ class _FloatingEVAButtonState extends State<FloatingEVAButton> {
       child: Container(
         width: 64,
         height: 64,
-        decoration: BoxDecoration(
-          color: const Color(0xFFFC603F),
+        decoration: const BoxDecoration(
+          color: Color(0xFFFC603F),
           shape: BoxShape.circle,
         ),
         child: Icon(

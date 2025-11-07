@@ -1,37 +1,38 @@
 // lib/EVA/eva_agent.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'dart:async';
 
 class EVAAgent {
+  // ← CHANGE ONLY WHEN ngrok DIES
   static const String _url =
-      "https://eva-support-bot.onrender.com/webhook/eva-chat";
+      "https://urijah-communionable-defiantly.ngrok-free.dev/webhook/eva-chat";
 
-  /// Sends a user message to EVA and returns the response.
-  static Future<String> ask(String userMessage) async {
-    if (userMessage.trim().isEmpty) return "Please ask something!";
+  static Future<String> ask(
+    String userMessage, {
+    required String sessionId,
+  }) async {
+    if (userMessage.trim().isEmpty) return "Say something!";
+
+    final payload = {
+      "message": userMessage,
+      "sessionId": sessionId,
+    };
 
     try {
-      final response = await http
-          .post(
-            Uri.parse(_url),
-            headers: {"Content-Type": "application/json"},
-            body: jsonEncode({"message": userMessage}),
-          )
-          .timeout(const Duration(seconds: 30));
+      final response = await http.post(
+        Uri.parse(_url),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(payload),
+      ).timeout(const Duration(seconds: 12));
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        return data['response']?.toString() ?? "No response from EVA.";
-      } else {
-        return "Server error: ${response.statusCode}";
+      if (response.statusCode != 200) {
+        return "EVA is down (${response.statusCode})";
       }
-    } on TimeoutException {
-      return "EVA is taking a nap (free tier). Try again in 10s.";
-    } on http.ClientException {
-      return "Network issue. Check your connection.";
+
+      final data = jsonDecode(response.body);
+      return data["response"]?.toString() ?? "Thinking...";
     } catch (e) {
-      return "Error: $e";
+      return "No internet";
     }
   }
 }

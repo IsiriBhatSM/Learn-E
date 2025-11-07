@@ -1,8 +1,7 @@
 // lib/pages/signup_screen.dart
 import 'package:flutter/material.dart';
-import 'package:learn_e/data/profile_data.dart';        // <-- NEW IMPORT
-import 'package:learn_e/pages/home_page.dart';       // optional, for clarity
-
+import 'package:learn_e/data/profile_data.dart';
+// import 'package:learn_e/pages/home_page.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -55,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       const SnackBar(content: Text('Signup successful!')),
     );
 
-    // Navigate to Home (replace login stack)
+    // Navigate to Home (replaced login stack)
     Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
   }
 
