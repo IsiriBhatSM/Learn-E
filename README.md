@@ -26,17 +26,6 @@ The app features smooth navigation, consistent branding, and Firebase integratio
 
 ---
 
-#1. Clone the repository
-git clone <your-repo-link>
-
-#2. Navigate into the project folder
-cd learn-e
-
-#3. Install dependencies
-flutter pub get
-
-#4. Run the app
-flutter run
 
 ```bash
 # 1. Clone the repository
@@ -51,10 +40,6 @@ flutter pub get
 # 4. Run the app
 flutter run
 ```
-
-
-
-
 
 
 
