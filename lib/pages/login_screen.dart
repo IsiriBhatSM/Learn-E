@@ -1,4 +1,5 @@
 // lib/pages/login_screen.dart
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/signup_screen.dart';
 import 'package:learn_e/pages/first_page.dart';
@@ -29,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
+    
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
 
@@ -54,6 +56,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
     // Simulated login
     setState(() => _isLoading = true);
+    try{
+      // Firebase Authentication login
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
     await Future.delayed(const Duration(seconds: 1));
     setState(() => _isLoading = false);
 
@@ -69,6 +77,43 @@ class _LoginScreenState extends State<LoginScreen> {
       context,
       MaterialPageRoute(builder: (_) => const FirstPage()),
     );
+  }on FirebaseAuthException catch (e) {
+    // Handle Firebase login errors
+    String message;
+    switch (e.code) {
+      case 'user-not-found':
+        message = 'No account found with this email. Please sign up first.';
+        break;
+      case 'wrong-password':
+        message = 'Incorrect password. Please try again.';
+        break;
+      case 'invalid-email':
+        message = 'Invalid email format. Please check your email.';
+        break;
+      case 'user-disabled':
+        message = 'This account has been disabled. Contact support.';
+        break;
+      case 'too-many-requests':
+        message = 'Too many failed attempts. Try again later.';
+        break;
+      case 'network-request-failed':
+        message = 'Network error. Please check your internet connection.';
+        break;
+      default:
+        message = 'Login failed. Please check your email and password.';
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  } catch (e) {
+    // Catch unexpected errors
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('An unexpected error occurred.')),
+    );
+  } finally {
+    setState(() => _isLoading = false);
+  }
   }
 
   @override

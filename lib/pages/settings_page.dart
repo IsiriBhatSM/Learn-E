@@ -1,4 +1,5 @@
 // lib/pages/settings_page.dart
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_e/pages/login_screen.dart';
 // import 'package:learn_e/widgets/navigation_bar.dart';
@@ -41,10 +42,8 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             const SizedBox(height: 40),
             ElevatedButton.icon(
-              onPressed: () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (_) => LoginScreen()),
-              ),
+              onPressed: () async {await FirebaseAuth.instance.signOut();
+  Navigator.pushReplacementNamed(context, '/login');},
               icon: const Icon(Icons.logout),
               label: const Text("Logout"),
               style: ElevatedButton.styleFrom(
